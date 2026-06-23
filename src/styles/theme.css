@@ -1,0 +1,216 @@
+:root {
+  /* Typography Fonts */
+  --font-display: 'Hanken Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Colors - Light Mode (Indigo & Crisp Teal) */
+  --background: #f1f5f9;
+  --on-background: #0f172a;
+
+  --primary: #4f46e5;
+  --on-primary: #ffffff;
+  --primary-container: #e0e7ff;
+  --on-primary-container: #3730a3;
+  --primary-fixed: #e0e7ff;
+  --on-primary-fixed: #312e81;
+  --primary-fixed-dim: #c7d2fe;
+  --on-primary-fixed-variant: #4f46e5;
+
+  --secondary: #0d9488;
+  --on-secondary: #ffffff;
+  --secondary-container: #ccfbf1;
+  --on-secondary-container: #115e59;
+  --secondary-fixed: #ccfbf1;
+  --on-secondary-fixed: #134e5e;
+  --secondary-fixed-dim: #99f6e4;
+  --on-secondary-fixed-variant: #0d9488;
+
+  --tertiary: #db2777;
+  --on-tertiary: #ffffff;
+  --tertiary-container: #fce7f3;
+  --on-tertiary-container: #9d174d;
+
+  --surface: rgba(248, 250, 252, 0.65);
+  --on-surface: #0f172a;
+  --surface-variant: rgba(226, 232, 240, 0.75);
+  --on-surface-variant: #475569;
+  --outline: rgba(15, 23, 42, 0.08);
+  --outline-variant: rgba(15, 23, 42, 0.04);
+
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f1f5f9;
+  --surface-container: #e2e8f0;
+  --surface-container-high: #cbd5e1;
+  --surface-container-highest: #94a3b8;
+
+  --error: #ef4444;
+  --on-error: #ffffff;
+  --error-container: #fee2e2;
+  --on-error-container: #991b1b;
+
+  /* Spacing System */
+  --stack-gap: 16px;
+  --section-margin: 48px;
+  --container-padding: 24px;
+  --gutter: 20px;
+  --base: 8px;
+
+  /* Border Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-3xl: 32px;
+  --radius-full: 9999px;
+
+  /* Typography Sizes */
+  --fs-headline-lg-mobile: 22px;
+  --lh-headline-lg-mobile: 30px;
+  
+  --fs-display: clamp(2rem, 5vw, 2.5rem);
+  --lh-display: 1.25;
+
+  --fs-body-lg: 16px;
+  --lh-body-lg: 24px;
+
+  --fs-headline-lg: clamp(1.35rem, 4.5vw, 1.75rem);
+  --lh-headline-lg: 1.35;
+
+  --fs-label-sm: 11px;
+  --lh-label-sm: 14px;
+
+  --fs-body-md: 14px;
+  --lh-body-md: 20px;
+
+  color-scheme: light dark;
+}
+
+/* Dark Mode Overrides (Electric Indigo, Soft Teal, and Obsidian Black) */
+.dark {
+  --background: #080a10;
+  --on-background: #f8fafc;
+
+  --surface: rgba(13, 18, 30, 0.65);
+  --on-surface: #f8fafc;
+  --surface-variant: rgba(30, 41, 59, 0.4);
+  --on-surface-variant: #cbd5e1;
+  --outline: rgba(255, 255, 255, 0.08);
+  --outline-variant: rgba(255, 255, 255, 0.03);
+
+  --surface-container-lowest: #030509;
+  --surface-container-low: #0c0e17;
+  --surface-container: #101424;
+  --surface-container-high: #1a2035;
+  --surface-container-highest: #232a45;
+
+  --primary: #6366f1;
+  --on-primary: #ffffff;
+  --primary-container: rgba(99, 102, 241, 0.15);
+  --on-primary-container: #a5b4fc;
+
+  --secondary: #14b8a6;
+  --on-secondary: #ffffff;
+  --secondary-container: rgba(20, 184, 166, 0.15);
+  --on-secondary-container: #99f6e4;
+
+  --tertiary: #ec4899;
+  --on-tertiary: #ffffff;
+  --tertiary-container: rgba(236, 72, 153, 0.15);
+  --on-tertiary-container: #fbcfe8;
+}
+
+/* Global Elements styling */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  background-color: var(--background) !important;
+  color: var(--on-background);
+  transition: background-color 0.25s ease, color 0.25s ease;
+  position: relative;
+}
+
+/* Specific theme transitions to interactive/card containers */
+body, header, nav, main, input, textarea, button, select, .glass-card, .lang-bar, .lang-btn, .lang-dropdown, .swap-btn, .result-card, .input-card, .settings-card, .settings-row-btn, .settings-row-static, .tab-btn, .theme-switch-btn, .action-btn {
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+/* Glowing Background Blobs for Modern Aesthetic */
+body::before {
+  content: '';
+  position: fixed;
+  top: -10%;
+  left: -10%;
+  width: 50%;
+  height: 50%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+  z-index: -2;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  bottom: -10%;
+  right: -10%;
+  width: 50%;
+  height: 50%;
+  background: radial-gradient(circle, rgba(20, 184, 166, 0.06) 0%, transparent 70%);
+  z-index: -2;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* Make Material Symbols inherit context colors natively */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 450, 'GRAD' 0, 'opsz' 24;
+  color: currentColor !important; /* Fixed black icon override */
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Premium Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--outline);
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-container);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Common Shimmer Animation */
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  background-size: 200% 100%;
+  animation: shimmer-anim 2.5s infinite linear;
+}
+
+@keyframes shimmer-anim {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}

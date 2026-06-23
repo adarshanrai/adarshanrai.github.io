@@ -1,0 +1,69 @@
+/* App Layout & Wrappers */
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--on-background);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.main-content {
+  flex-grow: 1;
+}
+
+.translation-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+@media (min-width: 768px) {
+  .translation-grid {
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0.5rem;
+  }
+}
+
+/* Waveform Visual Separator */
+.waveform-container {
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .waveform-container {
+    height: auto;
+    width: 2.5rem;
+    flex-direction: column;
+  }
+}
+
+.waveform-line {
+  width: 6rem;
+  height: 2px;
+  background-color: var(--outline);
+  border-radius: var(--radius-full);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .waveform-line {
+    width: 2px;
+    height: 10rem;
+  }
+}
+
+.waveform-line .shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  background-size: 200% 100%;
+  animation: shimmer-anim 2s infinite linear;
+}

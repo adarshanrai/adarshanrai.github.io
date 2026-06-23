@@ -1,0 +1,88 @@
+/* ==========================================================================
+   BOTTOM NAVIGATION BAR STYLES
+   ========================================================================== */
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.5rem 1rem calc(0.6rem + env(safe-area-inset-bottom)) 1rem;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--outline);
+  border-top-left-radius: var(--radius-2xl);
+  border-top-right-radius: var(--radius-2xl);
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+}
+
+.dark .bottom-nav {
+  background: rgba(8, 10, 16, 0.7);
+  border-top: 1px solid var(--outline);
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.nav-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-lg);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--on-surface-variant);
+  opacity: 0.75;
+  min-width: 64px;
+}
+
+.nav-btn:hover {
+  opacity: 1;
+  color: var(--primary);
+}
+
+.nav-btn:active {
+  transform: scale(0.92);
+}
+
+.nav-btn--active {
+  background-color: var(--primary-container) !important;
+  color: var(--primary) !important;
+  opacity: 1;
+  box-shadow: 0 4px 15px -3px rgba(99, 102, 241, 0.15) !important;
+  transform: translateY(-2px);
+}
+
+.dark .nav-btn--active {
+  background-color: var(--primary-container) !important;
+  color: var(--on-primary-container) !important;
+  opacity: 1;
+  box-shadow: 0 4px 15px -3px rgba(99, 102, 241, 0.35) !important;
+  transform: translateY(-2px);
+}
+
+.nav-btn span.material-symbols-outlined {
+  font-size: 22px;
+  margin-bottom: 2px;
+  transition: transform 0.2s ease;
+}
+
+.nav-btn:hover span.material-symbols-outlined {
+  transform: translateY(-1px);
+}
+
+.nav-label {
+  font-family: var(--font-body);
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

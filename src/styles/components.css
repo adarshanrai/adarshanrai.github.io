@@ -1,0 +1,227 @@
+/* Modern Card & Glassmorphism Design Styles */
+.glass-card {
+  background: var(--surface) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid var(--outline) !important;
+  border-radius: var(--radius-2xl);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.04),
+              inset 0 1px 1px rgba(255, 255, 255, 0.15) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08),
+              inset 0 1px 2px rgba(255, 255, 255, 0.25) !important;
+  border-color: rgba(99, 102, 241, 0.25) !important;
+}
+
+.dark .glass-card {
+  background: rgba(13, 18, 30, 0.45) !important;
+  box-shadow: 0 12px 36px -12px rgba(0, 0, 0, 0.3),
+              inset 0 1px 1px rgba(255, 255, 255, 0.08) !important;
+}
+
+.dark .glass-card:hover {
+  box-shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.4),
+              inset 0 1px 2px rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(99, 102, 241, 0.35) !important;
+}
+
+/* Toast Notifications */
+.toast-message {
+  position: fixed;
+  top: 5.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  background-color: var(--primary);
+  color: var(--on-primary);
+  padding: 0.65rem 1.5rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.35);
+  font-family: var(--font-body);
+  font-size: var(--fs-body-md);
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: toastAnim 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.dark .toast-message {
+  box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.5);
+  background-color: var(--primary);
+  color: var(--on-primary);
+}
+
+@media (min-width: 768px) {
+  .toast-message {
+    top: auto;
+    bottom: 2rem;
+    left: auto;
+    right: 2rem;
+    transform: none;
+    animation: toastAnimDesktop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+}
+
+@keyframes toastAnimDesktop {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes toastAnim {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-15px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+/* Empty States */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--surface-variant);
+  border: 1px dashed var(--outline);
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.empty-state-icon {
+  font-size: 40px;
+  color: var(--primary) !important;
+  opacity: 0.8;
+  margin-bottom: 12px;
+}
+
+.empty-state-text {
+  color: var(--on-surface-variant);
+  font-size: var(--fs-body-md);
+  font-weight: 500;
+  max-width: 280px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Floating Action Button (FAB) */
+.fab-container {
+  position: fixed;
+  bottom: 6rem;
+  right: 1.5rem;
+  z-index: 40;
+}
+
+@media (min-width: 768px) {
+  .fab-container {
+    right: 3rem;
+  }
+}
+
+.fab-btn {
+  height: 3.25rem;
+  width: 3.25rem;
+  border-radius: var(--radius-xl);
+  background-color: var(--primary);
+  color: var(--on-primary) !important;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 20px -5px rgba(99, 102, 241, 0.4);
+  transition: all 0.2s ease;
+}
+
+.fab-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 24px -6px rgba(99, 102, 241, 0.5);
+  filter: brightness(1.08);
+}
+
+.fab-btn:active {
+  transform: scale(0.95);
+}
+
+/* Shaders Background */
+.shaders-container {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  opacity: 0.15;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.dark .shaders-container {
+  opacity: 0.22;
+}
+
+.bg-shader-1 {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  width: 32rem;
+  height: 32rem;
+  background-color: rgba(99, 102, 241, 0.25);
+  filter: blur(140px);
+  border-radius: var(--radius-full);
+  animation: floatBlob1 25s infinite ease-in-out;
+}
+
+.bg-shader-2 {
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  width: 28rem;
+  height: 28rem;
+  background-color: rgba(20, 184, 166, 0.2);
+  filter: blur(120px);
+  border-radius: var(--radius-full);
+  animation: floatBlob2 30s infinite ease-in-out;
+}
+
+@keyframes floatBlob1 {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(40px, 60px) scale(1.1); }
+  66% { transform: translate(-30px, 30px) scale(0.95); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes floatBlob2 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-50px, -40px) scale(1.08); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+.view-mode-btn {
+  padding: 0.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--outline);
+  background-color: var(--surface-variant);
+  color: var(--on-surface-variant) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.view-mode-btn:hover {
+  background-color: var(--primary-container);
+  color: var(--primary) !important;
+  border-color: var(--primary);
+}
