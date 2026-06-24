@@ -9,7 +9,7 @@ import Indepth from './views/Indepth';
 
 export default function App() {
   const [view, setView] = useState('translate'); // 'translate' | 'history' | 'saved' | 'info' | 'indepth'
-  const [theme, setTheme] = useState('dark'); // 'dark' | 'light'
+  const [theme, setTheme] = useState('light'); // 'dark' | 'light'
   const [sourceLang, setSourceLang] = useState('English');
   const [targetLang, setTargetLang] = useState('Rai');
   const [indepthLang, setIndepthLang] = useState('Rai');

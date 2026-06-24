@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+const API_URL = 'https://adarshan.onrender.com';
+
 export default function Info() {
   const [emailInput, setEmailInput] = useState('');
   const [messageInput, setMessageInput] = useState('');
@@ -17,7 +19,7 @@ export default function Info() {
 
     setIsSending(true);
     try {
-      const response = await fetch('http://localhost:5000/api/feedback', {
+      const response = await fetch(`${API_URL}/api/feedback`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

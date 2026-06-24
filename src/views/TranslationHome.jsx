@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
+const API_URL = 'https://adarshan.onrender.com';
+
 const LOCAL_TRANSLATIONS = [
   // English ↔ Rai
   { sourceText: "hello", translatedText: "Sewa", sourceLang: "English", targetLang: "Rai" },
@@ -219,7 +221,7 @@ export default function TranslationHome({
 
     async function checkStatus() {
       try {
-        const res = await fetch('http://localhost:5000/api/translate/seed');
+        const res = await fetch(`${API_URL}/api/translate/seed`);
         const data = await res.json();
         if (res.ok && data.success) {
           setDbStatus(data.dataSource === 'MongoDB' ? 'Connected' : 'Offline Mode');
@@ -266,7 +268,7 @@ export default function TranslationHome({
     setCustomTranslation('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/translate', {
+      const response = await fetch(`${API_URL}/api/translate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -339,7 +341,7 @@ export default function TranslationHome({
 
     setIsSavingCustom(true);
     try {
-      const response = await fetch('http://localhost:5000/api/translate/add', {
+      const response = await fetch(`${API_URL}/api/translate/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

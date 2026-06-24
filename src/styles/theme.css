@@ -38,7 +38,7 @@
   --outline: rgba(15, 23, 42, 0.08);
   --outline-variant: rgba(15, 23, 42, 0.04);
 
-  --surface-container-lowest: #ffffff;
+  --surface-container-lowest: #f5f7fa;
   --surface-container-low: #f1f5f9;
   --surface-container: #e2e8f0;
   --surface-container-high: #cbd5e1;
@@ -176,6 +176,30 @@ body::after {
   color: currentColor !important; /* Fixed black icon override */
   display: inline-block;
   vertical-align: middle;
+}
+
+html:not(.dark) .material-symbols-outlined {
+  color: #000000 !important;
+}
+
+html:not(.dark) .logo-icon.material-symbols-outlined {
+  color: var(--primary) !important;
+}
+
+html:not(.dark) .nav-btn--active .material-symbols-outlined {
+  color: var(--primary) !important;
+}
+
+html:not(.dark) .nav-btn:hover .material-symbols-outlined {
+  color: var(--primary) !important;
+}
+
+html:not(.dark) .theme-toggle-btn:hover .material-symbols-outlined {
+  color: var(--primary) !important;
+}
+
+html:not(.dark) .settings-row-btn:hover .material-symbols-outlined {
+  color: var(--primary) !important;
 }
 
 /* Premium Scrollbars */
