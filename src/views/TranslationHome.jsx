@@ -38,21 +38,41 @@ const findLocalTranslation = (word, sourceLang, targetLang) => {
   const normSrc = sourceLang.toLowerCase();
   const normTgt = targetLang.toLowerCase();
 
-  // Try exact lookup first
-  const match = LOCAL_TRANSLATIONS.find(item => 
-    item.sourceText.toLowerCase() === word.trim().toLowerCase() &&
-    item.sourceLang.toLowerCase() === normSrc &&
-    item.targetLang.toLowerCase() === normTgt
-  );
-  if (match) return match.translatedText;
+  const getDirectMatch = (w, src, tgt) => {
+    const wTrim = w.trim().toLowerCase();
+    const wNorm = wTrim.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g,"");
 
-  // Try normalized lookup next
-  const normMatch = LOCAL_TRANSLATIONS.find(item => 
-    item.sourceText.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g,"") === normWord &&
-    item.sourceLang.toLowerCase() === normSrc &&
-    item.targetLang.toLowerCase() === normTgt
-  );
-  if (normMatch) return normMatch.translatedText;
+    // Try exact lookup first
+    const match = LOCAL_TRANSLATIONS.find(item => 
+      item.sourceText.toLowerCase() === wTrim &&
+      item.sourceLang.toLowerCase() === src &&
+      item.targetLang.toLowerCase() === tgt
+    );
+    if (match) return match.translatedText;
+
+    // Try normalized lookup next
+    const normMatch = LOCAL_TRANSLATIONS.find(item => 
+      item.sourceText.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g,"") === wNorm &&
+      item.sourceLang.toLowerCase() === src &&
+      item.targetLang.toLowerCase() === tgt
+    );
+    if (normMatch) return normMatch.translatedText;
+
+    return null;
+  };
+
+  // 1. Try direct match
+  const direct = getDirectMatch(word, normSrc, normTgt);
+  if (direct) return direct;
+
+  // 2. Try transit translation via English (if both are local languages)
+  if (normSrc !== 'english' && normTgt !== 'english') {
+    const toEnglish = getDirectMatch(word, normSrc, 'english');
+    if (toEnglish) {
+      const toTarget = getDirectMatch(toEnglish, 'english', normTgt);
+      if (toTarget) return toTarget;
+    }
+  }
 
   return null;
 };
