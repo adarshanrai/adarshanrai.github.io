@@ -152,7 +152,7 @@ export default function Indepth({ langName, setView }) {
 
         {/* Box 1: History - 2 Columns wide */}
         <div className="glass-card bento-card bento-col-2 bento-row-layout">
-          <div className="bento-card-text-col" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+          <div className="bento-card-text-col" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
             <div className="bento-card-header">
               <span className="material-symbols-outlined bento-card-icon">history_edu</span>
               <h3 className="bento-card-title">{data.history.title}</h3>
@@ -161,7 +161,7 @@ export default function Indepth({ langName, setView }) {
               {data.history.text}
             </p>
           </div>
-          <div className="bento-card-image-wrap bento-card-img-col" style={{ height: '330px', maxHeight: '350px' }}>
+          <div className="bento-card-image-wrap bento-card-img-col" style={{ height: '430px', maxHeight: '340px' }}>
             <img 
               src={data.history.image} 
               alt={data.history.title} 
